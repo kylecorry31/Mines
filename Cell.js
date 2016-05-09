@@ -48,12 +48,13 @@ Cell.prototype.draw = function() {
         fill(0);
     } else if (this.getValue() > 0) {
         fill(0);
-        text(this.getValue(), this.getX() + this.getSize() / 2, this.getY() + this.getSize() / 2);
+        text(this.getValue(), this.getX() + this.getSize() / 2 - 2, this.getY() + this.getSize() / 2 + 2);
         noFill();
     }
     if (!this.visited) {
         fill(127);
-    } else if (this.flagged) {
+    }
+    if (this.flagged) {
         fill(0, 255, 0);
     }
     rect(this.getX(), this.getY(), this.getSize(), this.getSize());
