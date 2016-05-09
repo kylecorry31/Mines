@@ -9,6 +9,8 @@ var timer = false;
 var numMines = 10;
 var cellsLeft = numCells * numCells;
 var flags = numMines;
+var start;
+var time;
 
 
 function setup() {
@@ -16,6 +18,7 @@ function setup() {
     grid = new CellGrid(numCells, numCells, cellWidth);
     grid.spawnMines(numMines);
     stack = [];
+    start = new Date();
 }
 
 function draw() {
@@ -41,7 +44,9 @@ function draw() {
         fill(0);
         stroke(0);
         text("You Won!", width / 2 - 10, height / 2 + 5);
+        text(time + " seconds", width / 2 - 15, height / 2 + 25);
         if (!timer) {
+            time = round((new Date() - start) / 1000);
             setTimeout(function() {
                 window.location.reload();
             }, 2000);
