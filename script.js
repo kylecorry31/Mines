@@ -101,6 +101,10 @@ function clearCell(cell) {
     }
 }
 
+document.oncontextmenu(function(event){
+  event.preventDefault();
+});
+
 function onMousePress() {
     var col = floor(mouseX / cellWidth);
     var row = floor(mouseY / cellWidth);
