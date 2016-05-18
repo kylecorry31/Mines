@@ -101,9 +101,9 @@ function clearCell(cell) {
     }
 }
 
-document.oncontextmenu(function(event){
+document.oncontextmenu = function(event){
   event.preventDefault();
-});
+};
 
 function onMousePress() {
     var col = floor(mouseX / cellWidth);
