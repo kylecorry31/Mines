@@ -2,14 +2,17 @@ function HighScore() {
     this.key = 'highscore';
     this.highscore = localStorage.getItem(this.key);
     if (this.highscore === null) {
-        this.highscore = 0;
-        localStorage.setItem(this.key, 0);
+        localStorage.setItem(this.key, undefined);
+    } else {
+        this.highscore = parseInt(this.highscore, 10);
     }
-    this.highscore = parseInt(this.highscore, 10);
 }
 
 
 HighScore.prototype.isHighScore = function(score, greater) {
+    if (this.highscore === null) {
+        return true;
+    }
     return greater === (this.getHighScore() < score);
 };
 

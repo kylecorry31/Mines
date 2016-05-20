@@ -59,10 +59,11 @@ function draw() {
         text(time + " seconds", width / 2 - 15, height / 2 + 25);
         var highScoreText;
         if (wasHighScore) {
-            highScoreText = "You got the new highscore!";
+            highScoreText = "That's a new highscore!";
         } else {
             highScoreText = "Highscore: " + highScoreTable.getHighScore() + " seconds";
         }
+        text(highScoreText, width / 2 - 48, height / 2 + 45);
     } else {
         background(255, 0, 0);
         fill(0);
