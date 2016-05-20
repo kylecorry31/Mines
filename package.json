@@ -1,5 +1,16 @@
 {
-  "name" : "Mines",
-  "version" : "0.1.0",
-  "main" : "main.js"
+    "name": "Mines",
+    "version": "0.1.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-packager . Mines --platform=win32 --arch=x64 --version=0.37.8"
+    },
+    "author": "Kyle Corry",
+    "license": "MIT",
+    "devDependencies": {
+        "electron-packager": "^7.0.1",
+        "electron-prebuilt": "^0.37.8"
+    }
 }

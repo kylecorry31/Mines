@@ -11,12 +11,16 @@ var cellsLeft = numCells * numCells;
 var flags = numMines;
 var start;
 var time;
+var highScoreTable;
+var wasHighScore;
 
 
 function setup() {
     createCanvas(800, 600);
     grid = new CellGrid(numCells, numCells, cellWidth);
     grid.spawnMines(numMines);
+    highScoreTable = new HighScore();
+    wasHighScore = false;
     stack = [];
     start = new Date();
 }
@@ -40,17 +44,24 @@ function draw() {
         stroke(0);
         text("Flags left: " + flags, width - 140, height / 2 + 5);
     } else if (won) {
+        if (!timer) {
+            time = round((new Date() - start) / 1000);
+            wasHighScore = highScoreTable.setScore(time);
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+            timer = true;
+        }
         background(0, 255, 0);
         fill(0);
         stroke(0);
         text("You Won!", width / 2 - 10, height / 2 + 5);
         text(time + " seconds", width / 2 - 15, height / 2 + 25);
-        if (!timer) {
-            time = round((new Date() - start) / 1000);
-            setTimeout(function() {
-                window.location.reload();
-            }, 2000);
-            timer = true;
+        var highScoreText;
+        if (wasHighScore) {
+            highScoreText = "You got the new highscore!";
+        } else {
+            highScoreText = "Highscore: " + highScoreTable.getHighScore() + " seconds";
         }
     } else {
         background(255, 0, 0);
