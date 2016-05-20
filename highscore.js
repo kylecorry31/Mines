@@ -8,8 +8,8 @@ function HighScore() {
 }
 
 
-HighScore.prototype.isHighScore = function(score) {
-    return this.getHighScore() < score;
+HighScore.prototype.isHighScore = function(score, greater) {
+    return greater === (this.getHighScore() < score);
 };
 
 HighScore.prototype.getHighScore = function() {
@@ -19,10 +19,10 @@ HighScore.prototype.getHighScore = function() {
 HighScore.prototype.setHighScore = function(score) {
     this.highscore = score;
     localStorage.setItem(this.key, score);
-}
+};
 
-HighScore.prototype.setScore = function(score) {
-    var highscore = this.isHighScore(score);
+HighScore.prototype.setScore = function(score, greater) {
+    var highscore = this.isHighScore(score, greater);
     if (highscore) {
         this.setHighScore(score);
     }

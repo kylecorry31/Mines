@@ -46,7 +46,7 @@ function draw() {
     } else if (won) {
         if (!timer) {
             time = round((new Date() - start) / 1000);
-            wasHighScore = highScoreTable.setScore(time);
+            wasHighScore = highScoreTable.setScore(time, false);
             setTimeout(function() {
                 window.location.reload();
             }, 2000);
