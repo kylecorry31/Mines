@@ -1,10 +1,11 @@
 function HighScore() {
     this.key = 'highscore';
-    this.highscore = parseInt(localStorage.getItem(this.key), 10);
+    this.highscore = localStorage.getItem(this.key);
     if (this.highscore === null) {
         this.highscore = 0;
         localStorage.setItem(this.key, 0);
     }
+    this.highscore = parseInt(this.highscore, 10);
 }
 
 
